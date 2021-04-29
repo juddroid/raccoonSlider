@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import RaccoonCarousel from './components/raccoonCarousel/RaccoonCarousel';
+import RaccoonSlider from './lib/raccoonSlider/RaccoonSlider';
 
 function App() {
-  const carouselList = [
+  const data = [
     { data: '1' },
     { data: '2' },
     { data: '3' },
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <AppStyle className="App">
-      <RaccoonCarousel option={option} data={carouselList} />
+      <RaccoonSlider option={option} data={data} />
     </AppStyle>
   );
 }

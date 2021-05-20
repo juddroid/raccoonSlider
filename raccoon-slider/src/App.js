@@ -25,10 +25,11 @@ function App() {
   ];
   const option = {
     cardSize: 200,
-    cardMargin: 5,
-    displayCardCount: 3,
+    cardMargin: 10,
+    displayCardCount: 5,
     buttonType: 'default',
     buttonSize: 24,
+    moveCardCount: 1,
   };
 
   return (
@@ -40,4 +41,6 @@ function App() {
 
 export default App;
 
-const AppStyle = styled.div``;
+const AppStyle = styled.div`
+  margin-top: 160px;
+`;

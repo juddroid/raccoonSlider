@@ -49,7 +49,7 @@ function App() {
     dataType: 'img',
     buttonType: 'default',
     buttonSize: 24,
-    moveCardCount: 1,
+    moveCardCount: 0,
   };
 
   return (

@@ -19,6 +19,7 @@ import './App.css';
 import RaccoonSlider from '@juddroid_raccoon/react-slider/dist/raccoonSlider/RaccoonSlider';
 import styled from 'styled-components';
 
+// data
 const data = [
   { data: '1' },
   { data: '2' },
@@ -41,10 +42,30 @@ const data = [
   { data: '19' },
 ];
 
+// image
+const data = [
+  {
+    data: 'https://a0.muscache.com/im/pictures/dd9e507a-ea75-4634-bbdd-77c2ceb9adbf.jpg?im_w=1200',
+  },
+  {
+    data: 'https://a0.muscache.com/im/pictures/b71b2c8d-5ca7-4326-aa59-9811985f7320.jpg?im_w=720',
+  },
+  {
+    data: 'https://a0.muscache.com/im/pictures/934d9bb8-0c34-4a3e-85f5-e7b722855b00.jpg?im_w=720',
+  },
+  {
+    data: 'https://a0.muscache.com/im/pictures/613cf352-4052-4ea3-ac14-8adad0836adb.jpg?im_w=720',
+  },
+  {
+    data: 'https://a0.muscache.com/im/pictures/ff0277b5-2013-4dca-af1d-83ace4ee875a.jpg?im_w=720',
+  },
+];
+
 const option = {
-  cardSize: 150,
+  cardWidth: 300,
+  cardHeight: 200,
   cardMargin: 5,
-  displayCardCount: 5,
+  displayCardCount: 2,
   buttonType: 'default',
   buttonSize: 24,
 };
@@ -86,7 +107,7 @@ You need two props!
 
 |       Name       | Value  |                      Description                      |
 | :--------------: | :----: | :---------------------------------------------------: |
-|     cardSize     | number |                  each card size (px)                  |
+|    cardWidth     | number |                  each card size (px)                  |
 |    cardMargin    | number |                 each card margin (px)                 |
 | displayCardCount | number |             a number of card to be shown              |
 |    buttonType    | string | button type (only 'default' now, it will update soon) |

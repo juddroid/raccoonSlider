@@ -42,7 +42,8 @@ function App() {
     },
   ];
   const option = {
-    cardSize: 200,
+    cardWidth: 300,
+    cardHeight: 200,
     cardMargin: 0,
     displayCardCount: 1,
     dataType: 'img',

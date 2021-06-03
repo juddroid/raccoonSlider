@@ -93,7 +93,7 @@ const RaccoonSlider = ({ option, data }) => {
     <Wrapper>
       <DisplayContainer {...{ displayContainerSize }}>
         <RaccoonSliderContainer {...{ position, cardMargin }}>
-          <Slider {...{ cardWidth, cardMargin, data, dataType }} />
+          <Slider {...{ cardWidth, cardHeight, cardMargin, data, dataType }} />
         </RaccoonSliderContainer>
       </DisplayContainer>
       <SliderButton

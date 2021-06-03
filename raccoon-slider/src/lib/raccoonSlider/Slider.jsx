@@ -2,21 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
-const SliderCard = ({ cardWidth, cardMargin, contents, dataType, img }) => {
+const SliderCard = ({
+  cardWidth,
+  cardHeight,
+  cardMargin,
+  contents,
+  dataType,
+  img,
+}) => {
   return dataType === 'img' ? (
-    <SliderCardStyle {...{ cardWidth, cardMargin }}>
+    <SliderCardStyle {...{ cardWidth, cardHeight, cardMargin }}>
       <img src={img} alt={img} />
     </SliderCardStyle>
   ) : (
-    <SliderCardStyle {...{ cardWidth, cardMargin }}>{contents}</SliderCardStyle>
+    <SliderCardStyle {...{ cardWidth, cardHeight, cardMargin }}>
+      {contents}
+    </SliderCardStyle>
   );
 };
-const SliderCardList = ({ cardWidth, cardMargin, data, dataType }) => {
+const SliderCardList = ({
+  cardWidth,
+  cardHeight,
+  cardMargin,
+  data,
+  dataType,
+}) => {
   return (
     <SliderCardListStyle>
       {data.map((el) => (
         <SliderCard
-          {...{ cardWidth, cardMargin, dataType }}
+          {...{ cardWidth, cardHeight, cardMargin, dataType }}
           contents={el.data}
           img={el}
           key={uuidv4()}
@@ -26,10 +41,12 @@ const SliderCardList = ({ cardWidth, cardMargin, data, dataType }) => {
   );
 };
 
-const Slider = ({ cardWidth, cardMargin, data, dataType }) => {
+const Slider = ({ cardWidth, cardHeight, cardMargin, data, dataType }) => {
   return (
     <SliderWrapper>
-      <SliderCardList {...{ cardWidth, cardMargin, data, dataType }} />
+      <SliderCardList
+        {...{ cardWidth, cardHeight, cardMargin, data, dataType }}
+      />
     </SliderWrapper>
   );
 };
@@ -52,7 +69,7 @@ const SliderCardListStyle = styled.div`
 
 const SliderCardStyle = styled.div`
   width: ${({ cardWidth }) => `${cardWidth}px`};
-  height: ${({ cardWidth }) => `${cardWidth}px`};
+  height: ${({ cardHeight }) => `${cardHeight}px`};
   background: #e5e5e5;
   opacity: 1;
   border-radius: 10px;

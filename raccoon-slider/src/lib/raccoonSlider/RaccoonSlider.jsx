@@ -26,11 +26,8 @@ const RaccoonSlider = ({ option, data }) => {
   const eachCardSize = cardWidth + cardMargin * 2;
 
   const displayContainerSize = {
-    width: (
-      (cardWidth + cardMargin * 2) * displayCardCount -
-      cardMargin * 2
-    ).toString(),
-    height: (cardHeight + cardMargin * 4).toString(),
+    width: (cardWidth + cardMargin * 2) * displayCardCount - cardMargin * 2,
+    height: cardHeight + cardMargin * 4,
   };
 
   const arrowButtonDisableToggle = (state) => {

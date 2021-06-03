@@ -26,10 +26,11 @@ const RaccoonSlider = ({ option, data }) => {
   const eachCardSize = cardWidth + cardMargin * 2;
 
   const displayContainerSize = {
-    width: (cardWidth + cardMargin * 2) * displayCardCount - cardMargin * 2,
-    height: cardHeight + cardMargin * 4,
+    width: `${
+      (cardWidth + cardMargin * 2) * displayCardCount - cardMargin * 2
+    }px`,
+    height: `${cardHeight + cardMargin * 4}px`,
   };
-  console.log(displayContainerSize.width, displayContainerSize.height);
 
   const arrowButtonDisableToggle = (state) => {
     return state ? false : true;
@@ -118,14 +119,12 @@ export default RaccoonSlider;
 const Wrapper = styled.div`
   position: relative;
   box-sizing: border-box;
-  width: fit-content;
 `;
 
 const DisplayContainer = styled.div`
   position: relative;
-  width: ${({ displayContainerSize }) => displayContainerSize.width}px;
-  height: ${({ displayContainerSize }) => displayContainerSize.height}px;
-
+  width: ${({ displayContainerSize }) => displayContainerSize.width};
+  height: ${({ displayContainerSize }) => displayContainerSize.height};
   overflow: hidden;
   border: 1px solid rebeccapurple;
   border-radius: 10px;
@@ -136,8 +135,7 @@ const RaccoonSliderContainer = styled.div`
   position: absolute;
   width: fit-content;
   height: fit-content;
-  top: ${({ cardMargin }) => `${(cardMargin - 1).toString()}px`};
-  left: ${({ position, cardMargin }) =>
-    `${(position - cardMargin).toString()}px`};
+  top: ${({ cardMargin }) => `${cardMargin - 1}px`};
+  left: ${({ position, cardMargin }) => `${position - cardMargin}px`};
   transition: all ease-in-out 0.4s;
 `;

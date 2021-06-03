@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import RaccoonSlider from './lib/raccoonSlider/RaccoonSlider';
 
 function App() {
@@ -52,15 +51,7 @@ function App() {
     moveCardCount: 0,
   };
 
-  return (
-    <AppStyle className="App">
-      <RaccoonSlider option={option} data={data} />
-    </AppStyle>
-  );
+  return <RaccoonSlider option={option} data={data} />;
 }
 
 export default App;
-
-const AppStyle = styled.div`
-  margin-top: 160px;
-`;

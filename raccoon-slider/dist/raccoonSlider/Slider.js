@@ -18,23 +18,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var SliderCard = function SliderCard(_ref) {
-  var cardSize = _ref.cardSize,
+  var cardWidth = _ref.cardWidth,
       cardMargin = _ref.cardMargin,
-      contents = _ref.contents;
-  return /*#__PURE__*/_react.default.createElement(SliderCardStyle, {
-    cardSize: cardSize,
+      contents = _ref.contents,
+      dataType = _ref.dataType;
+  return dataType === 'img' ? /*#__PURE__*/_react.default.createElement(SliderCardStyle, {
+    cardWidth: cardWidth,
+    cardMargin: cardMargin
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: contents,
+    alt: contents
+  })) : /*#__PURE__*/_react.default.createElement(SliderCardStyle, {
+    cardWidth: cardWidth,
     cardMargin: cardMargin
   }, contents);
 };
 
 var SliderCardList = function SliderCardList(_ref2) {
-  var cardSize = _ref2.cardSize,
+  var cardWidth = _ref2.cardWidth,
       cardMargin = _ref2.cardMargin,
-      data = _ref2.data;
+      data = _ref2.data,
+      dataType = _ref2.dataType;
   return /*#__PURE__*/_react.default.createElement(SliderCardListStyle, null, data.map(function (el) {
     return /*#__PURE__*/_react.default.createElement(SliderCard, {
-      cardSize: cardSize,
+      cardWidth: cardWidth,
       cardMargin: cardMargin,
+      dataType: dataType,
       contents: el.data,
       key: (0, _uuid.v4)()
     });
@@ -42,13 +51,15 @@ var SliderCardList = function SliderCardList(_ref2) {
 };
 
 var Slider = function Slider(_ref3) {
-  var cardSize = _ref3.cardSize,
+  var cardWidth = _ref3.cardWidth,
       cardMargin = _ref3.cardMargin,
-      data = _ref3.data;
+      data = _ref3.data,
+      dataType = _ref3.dataType;
   return /*#__PURE__*/_react.default.createElement(SliderWrapper, null, /*#__PURE__*/_react.default.createElement(SliderCardList, {
-    cardSize: cardSize,
+    cardWidth: cardWidth,
     cardMargin: cardMargin,
-    data: data
+    data: data,
+    dataType: dataType
   }));
 };
 
@@ -59,12 +70,12 @@ var SliderWrapper = _styledComponents.default.div(_templateObject || (_templateO
 
 var SliderCardListStyle = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: space-between;\n  width: 100%;\n  height: 100%;\n"])));
 
-var SliderCardStyle = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: ", ";\n  height: ", ";\n  background: #e5e5e5;\n  opacity: 50%;\n  border: 1px solid #222;\n  border-radius: 10px;\n  margin: ", ";\n  box-sizing: border-box;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  color: #333;\n  font-size: 24px;\n  font-weight: 700;\n"])), function (_ref4) {
-  var cardSize = _ref4.cardSize;
-  return "".concat(cardSize, "px");
+var SliderCardStyle = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: ", ";\n  height: ", ";\n  background: #e5e5e5;\n  opacity: 1;\n  border: 1px solid #222;\n  border-radius: 10px;\n  margin: ", ";\n  box-sizing: border-box;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  color: #333;\n  font-size: 24px;\n  font-weight: 700;\n\n  img {\n    width: 100%;\n    height: 100%;\n  }\n"])), function (_ref4) {
+  var cardWidth = _ref4.cardWidth;
+  return "".concat(cardWidth, "px");
 }, function (_ref5) {
-  var cardSize = _ref5.cardSize;
-  return "".concat(cardSize, "px");
+  var cardWidth = _ref5.cardWidth;
+  return "".concat(cardWidth, "px");
 }, function (_ref6) {
   var cardMargin = _ref6.cardMargin;
   return "".concat(cardMargin, "px");

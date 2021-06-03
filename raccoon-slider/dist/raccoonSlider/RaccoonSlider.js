@@ -40,11 +40,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var RaccoonSlider = function RaccoonSlider(_ref) {
   var option = _ref.option,
       data = _ref.data;
-  var cardSize = option.cardSize,
+  var cardWidth = option.cardWidth,
+      cardHeight = option.cardHeight,
       cardMargin = option.cardMargin,
       displayCardCount = option.displayCardCount,
       buttonType = option.buttonType,
-      buttonSize = option.buttonSize;
+      buttonSize = option.buttonSize,
+      moveCardCount = option.moveCardCount,
+      dataType = option.dataType;
 
   var _useState = (0, _react.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -71,19 +74,21 @@ var RaccoonSlider = function RaccoonSlider(_ref) {
       rightArrowButtonState = _useState10[0],
       setRightArrowButtonState = _useState10[1];
 
-  var eachCardSize = cardSize + cardMargin * 2;
+  var eachCardSize = cardWidth + cardMargin * 2;
   var displayContainerSize = {
-    width: "".concat((cardSize + cardMargin * 2) * displayCardCount - cardMargin * 2, "px"),
-    height: "".concat(cardSize + cardMargin * 4, "px")
+    width: "".concat((cardWidth + cardMargin * 2) * displayCardCount - cardMargin * 2, "px"),
+    height: "".concat(cardHeight + cardMargin * 4, "px")
   };
 
   var arrowButtonDisableToggle = function arrowButtonDisableToggle(state) {
     return state ? false : true;
   };
 
-  var handleClickLeftButton = function handleClickLeftButton() {
+  var handleClickLeftButton = function handleClickLeftButton(e) {
+    e.preventDefault();
+    var restCardCount = leftSideRestCard % displayCardCount;
+
     if (leftSideRestCard < displayCardCount) {
-      var restCardCount = leftSideRestCard % displayCardCount;
       setPosition(position + eachCardSize * restCardCount);
       setLeftSideRestCard(leftSideRestCard - restCardCount);
       setRightSideRestCard(rightSideRestCard + restCardCount);
@@ -98,7 +103,9 @@ var RaccoonSlider = function RaccoonSlider(_ref) {
     setLeftArrowButtonState(arrowButtonDisableToggle(leftArrowButtonState));
   };
 
-  var handleClickRightButton = function handleClickRightButton() {
+  var handleClickRightButton = function handleClickRightButton(e) {
+    e.preventDefault();
+
     if (rightSideRestCard < displayCardCount) {
       var restCardCount = rightSideRestCard % displayCardCount;
       setPosition(position - eachCardSize * restCardCount);
@@ -124,13 +131,15 @@ var RaccoonSlider = function RaccoonSlider(_ref) {
     position: position,
     cardMargin: cardMargin
   }, /*#__PURE__*/_react.default.createElement(_Slider.default, {
-    cardSize: cardSize,
+    cardWidth: cardWidth,
     cardMargin: cardMargin,
-    data: data
+    data: data,
+    dataType: dataType
   }))), /*#__PURE__*/_react.default.createElement(_SliderButton.default, {
     buttonType: buttonType,
     buttonSize: buttonSize,
-    cardSize: cardSize,
+    cardWidth: cardWidth,
+    cardHeight: cardHeight,
     cardMargin: cardMargin,
     displayCardCount: displayCardCount,
     handleClickLeftButton: handleClickLeftButton,

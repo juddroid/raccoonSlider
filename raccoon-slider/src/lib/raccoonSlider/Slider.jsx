@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
-const SliderCard = ({ cardWidth, cardMargin, contents, dataType }) => {
+const SliderCard = ({ cardWidth, cardMargin, contents, dataType, img }) => {
   return dataType === 'img' ? (
     <SliderCardStyle {...{ cardWidth, cardMargin }}>
-      <img src={contents} alt={contents} />
+      <img src={img} alt={img} />
     </SliderCardStyle>
   ) : (
     <SliderCardStyle {...{ cardWidth, cardMargin }}>{contents}</SliderCardStyle>
@@ -18,6 +18,7 @@ const SliderCardList = ({ cardWidth, cardMargin, data, dataType }) => {
         <SliderCard
           {...{ cardWidth, cardMargin, dataType }}
           contents={el.data}
+          img={el}
           key={uuidv4()}
         />
       ))}
@@ -54,7 +55,6 @@ const SliderCardStyle = styled.div`
   height: ${({ cardWidth }) => `${cardWidth}px`};
   background: #e5e5e5;
   opacity: 1;
-  border: 1px solid #222;
   border-radius: 10px;
   margin: ${({ cardMargin }) => `${cardMargin}px`};
   box-sizing: border-box;

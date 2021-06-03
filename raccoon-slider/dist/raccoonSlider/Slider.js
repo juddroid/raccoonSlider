@@ -21,13 +21,14 @@ var SliderCard = function SliderCard(_ref) {
   var cardWidth = _ref.cardWidth,
       cardMargin = _ref.cardMargin,
       contents = _ref.contents,
-      dataType = _ref.dataType;
+      dataType = _ref.dataType,
+      img = _ref.img;
   return dataType === 'img' ? /*#__PURE__*/_react.default.createElement(SliderCardStyle, {
     cardWidth: cardWidth,
     cardMargin: cardMargin
   }, /*#__PURE__*/_react.default.createElement("img", {
-    src: contents,
-    alt: contents
+    src: img,
+    alt: img
   })) : /*#__PURE__*/_react.default.createElement(SliderCardStyle, {
     cardWidth: cardWidth,
     cardMargin: cardMargin
@@ -45,6 +46,7 @@ var SliderCardList = function SliderCardList(_ref2) {
       cardMargin: cardMargin,
       dataType: dataType,
       contents: el.data,
+      img: el,
       key: (0, _uuid.v4)()
     });
   }));
@@ -70,7 +72,7 @@ var SliderWrapper = _styledComponents.default.div(_templateObject || (_templateO
 
 var SliderCardListStyle = _styledComponents.default.div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: space-between;\n  width: 100%;\n  height: 100%;\n"])));
 
-var SliderCardStyle = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: ", ";\n  height: ", ";\n  background: #e5e5e5;\n  opacity: 1;\n  border: 1px solid #222;\n  border-radius: 10px;\n  margin: ", ";\n  box-sizing: border-box;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  color: #333;\n  font-size: 24px;\n  font-weight: 700;\n\n  img {\n    width: 100%;\n    height: 100%;\n  }\n"])), function (_ref4) {
+var SliderCardStyle = _styledComponents.default.div(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["\n  width: ", ";\n  height: ", ";\n  background: #e5e5e5;\n  opacity: 1;\n  border-radius: 10px;\n  margin: ", ";\n  box-sizing: border-box;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  color: #333;\n  font-size: 24px;\n  font-weight: 700;\n\n  img {\n    width: 100%;\n    height: 100%;\n  }\n"])), function (_ref4) {
   var cardWidth = _ref4.cardWidth;
   return "".concat(cardWidth, "px");
 }, function (_ref5) {

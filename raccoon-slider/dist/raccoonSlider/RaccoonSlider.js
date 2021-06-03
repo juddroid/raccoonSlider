@@ -132,6 +132,7 @@ var RaccoonSlider = function RaccoonSlider(_ref) {
     cardMargin: cardMargin
   }, /*#__PURE__*/_react.default.createElement(_Slider.default, {
     cardWidth: cardWidth,
+    cardHeight: cardHeight,
     cardMargin: cardMargin,
     data: data,
     dataType: dataType

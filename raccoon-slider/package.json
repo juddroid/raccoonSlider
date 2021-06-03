@@ -1,6 +1,6 @@
 {
   "name": "@juddroid_raccoon/react-slider",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "module": "dist/raccoonSlider",
   "main": "dist/raccoonSlider",
   "dependencies": {

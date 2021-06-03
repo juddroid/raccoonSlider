@@ -19,30 +19,35 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var SliderCard = function SliderCard(_ref) {
   var cardWidth = _ref.cardWidth,
+      cardHeight = _ref.cardHeight,
       cardMargin = _ref.cardMargin,
       contents = _ref.contents,
       dataType = _ref.dataType,
       img = _ref.img;
   return dataType === 'img' ? /*#__PURE__*/_react.default.createElement(SliderCardStyle, {
     cardWidth: cardWidth,
+    cardHeight: cardHeight,
     cardMargin: cardMargin
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: img,
     alt: img
   })) : /*#__PURE__*/_react.default.createElement(SliderCardStyle, {
     cardWidth: cardWidth,
+    cardHeight: cardHeight,
     cardMargin: cardMargin
   }, contents);
 };
 
 var SliderCardList = function SliderCardList(_ref2) {
   var cardWidth = _ref2.cardWidth,
+      cardHeight = _ref2.cardHeight,
       cardMargin = _ref2.cardMargin,
       data = _ref2.data,
       dataType = _ref2.dataType;
   return /*#__PURE__*/_react.default.createElement(SliderCardListStyle, null, data.map(function (el) {
     return /*#__PURE__*/_react.default.createElement(SliderCard, {
       cardWidth: cardWidth,
+      cardHeight: cardHeight,
       cardMargin: cardMargin,
       dataType: dataType,
       contents: el.data,
@@ -54,11 +59,13 @@ var SliderCardList = function SliderCardList(_ref2) {
 
 var Slider = function Slider(_ref3) {
   var cardWidth = _ref3.cardWidth,
+      cardHeight = _ref3.cardHeight,
       cardMargin = _ref3.cardMargin,
       data = _ref3.data,
       dataType = _ref3.dataType;
   return /*#__PURE__*/_react.default.createElement(SliderWrapper, null, /*#__PURE__*/_react.default.createElement(SliderCardList, {
     cardWidth: cardWidth,
+    cardHeight: cardHeight,
     cardMargin: cardMargin,
     data: data,
     dataType: dataType
@@ -76,8 +83,8 @@ var SliderCardStyle = _styledComponents.default.div(_templateObject3 || (_templa
   var cardWidth = _ref4.cardWidth;
   return "".concat(cardWidth, "px");
 }, function (_ref5) {
-  var cardWidth = _ref5.cardWidth;
-  return "".concat(cardWidth, "px");
+  var cardHeight = _ref5.cardHeight;
+  return "".concat(cardHeight, "px");
 }, function (_ref6) {
   var cardMargin = _ref6.cardMargin;
   return "".concat(cardMargin, "px");

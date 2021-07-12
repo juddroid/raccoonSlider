@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Carousel from './Carousel';
-import CarouselButton from './CarouselButton';
+import Slider from './Slider';
+import SliderButton from './SliderButton';
 
-const RaccoonCarousel = ({ option, data }) => {
+const RaccoonSlider = ({ option, data }) => {
   const {
-    cardSize,
+    cardWidth,
+    cardHeight,
     cardMargin,
     displayCardCount,
     buttonType,
     buttonSize,
+    moveCardCount,
+    dataType,
   } = option;
 
   const [position, setPosition] = useState(0);
@@ -20,21 +23,25 @@ const RaccoonCarousel = ({ option, data }) => {
   const [leftArrowButtonState, setLeftArrowButtonState] = useState(false);
   const [rightArrowButtonState, setRightArrowButtonState] = useState(false);
 
-  const eachCardSize = cardSize + cardMargin * 2;
+  const eachCardSize = cardWidth + cardMargin * 2;
+
   const displayContainerSize = {
     width: `${
-      (cardSize + cardMargin * 2) * displayCardCount - cardMargin * 2
+      (cardWidth + cardMargin * 2) * displayCardCount - cardMargin * 2
     }px`,
-    height: `${cardSize + cardMargin * 4}px`,
+    height: `${cardHeight + cardMargin * 4}px`,
   };
 
   const arrowButtonDisableToggle = (state) => {
     return state ? false : true;
   };
 
-  const handleClickLeftButton = () => {
+  const handleClickLeftButton = (e) => {
+    e.preventDefault();
+
+    const restCardCount = leftSideRestCard % displayCardCount;
+
     if (leftSideRestCard < displayCardCount) {
-      const restCardCount = leftSideRestCard % displayCardCount;
       setPosition(position + eachCardSize * restCardCount);
       setLeftSideRestCard(leftSideRestCard - restCardCount);
       setRightSideRestCard(rightSideRestCard + restCardCount);
@@ -52,7 +59,9 @@ const RaccoonCarousel = ({ option, data }) => {
     setLeftArrowButtonState(arrowButtonDisableToggle(leftArrowButtonState));
   };
 
-  const handleClickRightButton = () => {
+  const handleClickRightButton = (e) => {
+    e.preventDefault();
+
     if (rightSideRestCard < displayCardCount) {
       const restCardCount = rightSideRestCard % displayCardCount;
       setPosition(position - eachCardSize * restCardCount);
@@ -83,15 +92,16 @@ const RaccoonCarousel = ({ option, data }) => {
   return (
     <Wrapper>
       <DisplayContainer {...{ displayContainerSize }}>
-        <RaccoonCarouselContainer {...{ position, cardMargin }}>
-          <Carousel {...{ cardSize, cardMargin, data }} />
-        </RaccoonCarouselContainer>
+        <RaccoonSliderContainer {...{ position, cardMargin }}>
+          <Slider {...{ cardWidth, cardHeight, cardMargin, data, dataType }} />
+        </RaccoonSliderContainer>
       </DisplayContainer>
-      <CarouselButton
+      <SliderButton
         {...{
           buttonType,
           buttonSize,
-          cardSize,
+          cardWidth,
+          cardHeight,
           cardMargin,
           displayCardCount,
           handleClickLeftButton,
@@ -104,7 +114,7 @@ const RaccoonCarousel = ({ option, data }) => {
   );
 };
 
-export default RaccoonCarousel;
+export default RaccoonSlider;
 
 const Wrapper = styled.div`
   position: relative;
@@ -121,7 +131,7 @@ const DisplayContainer = styled.div`
   box-sizing: border-box;
   margin: 0 40px;
 `;
-const RaccoonCarouselContainer = styled.div`
+const RaccoonSliderContainer = styled.div`
   position: absolute;
   width: fit-content;
   height: fit-content;

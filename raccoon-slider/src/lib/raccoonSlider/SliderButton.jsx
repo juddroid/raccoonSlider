@@ -1,9 +1,11 @@
+import React from 'react';
 import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 
 const DefaultButton = ({
   buttonSize,
-  cardSize,
+  cardWidth,
+  cardHeight,
   cardMargin,
   displayCardCount,
   handleClickLeftButton,
@@ -14,14 +16,14 @@ const DefaultButton = ({
   return (
     <>
       <LeftButtonDiv
-        {...{ cardSize, cardMargin, displayCardCount, buttonSize }}
+        {...{ cardWidth, cardHeight, cardMargin, displayCardCount, buttonSize }}
         onClick={handleClickLeftButton}
         disabled={!leftArrowButtonState}
       >
         <IoChevronBackOutline size={buttonSize} color={'rebeccapurple'} />
       </LeftButtonDiv>
       <RightButtonDiv
-        {...{ cardSize, cardMargin, displayCardCount, buttonSize }}
+        {...{ cardWidth, cardHeight, cardMargin, displayCardCount, buttonSize }}
         onClick={handleClickRightButton}
         disabled={!rightArrowButtonState}
       >
@@ -34,10 +36,11 @@ const CustomButton = () => {
   return <div></div>;
 };
 
-const CarouselButton = ({
+const SliderButton = ({
   buttonType,
   buttonSize,
-  cardSize,
+  cardWidth,
+  cardHeight,
   cardMargin,
   displayCardCount,
   handleClickLeftButton,
@@ -50,7 +53,8 @@ const CarouselButton = ({
       <DefaultButton
         {...{
           buttonSize,
-          cardSize,
+          cardWidth,
+          cardHeight,
           cardMargin,
           displayCardCount,
           handleClickLeftButton,
@@ -64,12 +68,12 @@ const CarouselButton = ({
   }[buttonType];
 };
 
-export default CarouselButton;
+export default SliderButton;
 
 const StyledArrowButton = styled.button`
   position: absolute;
-  top: ${({ cardSize, cardMargin }) =>
-    `${(cardSize + cardMargin * 2) / 2 - 20}px`};
+  top: ${({ cardHeight, cardMargin }) =>
+    `${(cardHeight + cardMargin * 2) / 2 - 20}px`};
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -94,8 +98,8 @@ const LeftButtonDiv = styled(StyledArrowButton)`
 `;
 
 const RightButtonDiv = styled(StyledArrowButton)`
-  left: ${({ cardSize, cardMargin, displayCardCount }) =>
+  left: ${({ cardWidth, cardMargin, displayCardCount }) =>
     `${
-      45 + (cardSize + cardMargin * 2) * displayCardCount - cardMargin * 2
+      45 + (cardWidth + cardMargin * 2) * displayCardCount - cardMargin * 2
     }px`};
 `;

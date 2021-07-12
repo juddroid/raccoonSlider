@@ -91,7 +91,7 @@ You need two props!
 | displayCardCount | number |             a number of card to be shown              |
 |    buttonType    | string | button type (only 'default' now, it will update soon) |
 |    buttonSize    | number |                      button size                      |
-|     dataType     | string |    data type (only 'img' now, it will update soon     |
+|     dataType     | string |    data type (only 'img' now, it will update soon)    |
 
 ## <br />
 
